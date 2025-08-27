@@ -1,0 +1,7 @@
+{
+    "rewrites": [
+      { "source": "/index", "destination": "/index.html" },
+      { "source": "/downloads", "destination": "/arquivos.html" }
+    ]
+  }
+  

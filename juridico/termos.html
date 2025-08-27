@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aMathyzin - Termos de Serviço</title>
+  <meta property="og:title" content="aMathyzin - Termos de Serviço">
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+  <meta property="og:description" content="Leia os Termos de Serviço atualizados do aMathyzin e saiba mais sobre nossas políticas, responsabilidades e direitos.">
+  <meta property="og:image" content="https://amathyzin.com/imagens/og-image.jpg">
+  <meta property="og:url" content="https://amathyzin.com/termos">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="icon" href="https://amathyzin.com/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Three.js e GSAP para animações (opcional para o fundo animado) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  
+  <style>
+     @media only screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --accent: #ffe66d;
+      --dark: #1a1a1a;
+      --light-dark: #2a2a2a;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Fundo animado de partículas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(25, 25, 25, 0.9);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 0 25px rgba(255,107,107,0.5);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(255,107,107,0.5);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 150px 20px 50px;
+      background: var(--dark);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    /* Conteúdo dos Termos */
+    .content {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: var(--light-dark);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .content p {
+      margin: 10px 0;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    .content a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    .content a:hover {
+      color: var(--secondary);
+    }
+    /* Accordion */
+    .accordion {
+      margin-top: 20px;
+    }
+    .accordion-section {
+      border-bottom: 1px solid #444;
+      padding: 10px 0;
+    }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+    .accordion-header:hover {
+      color: var(--secondary);
+    }
+    .accordion-header i {
+      transition: transform 0.3s;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #ccc;
+    }
+    .accordion-content.open {
+      max-height: 500px;
+      margin-top: 10px;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: var(--secondary);
+    }
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem 3%;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(25,25,25,0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .content {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fundo animado -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar" data-aos="fade-down">
+      <div class="logo">aMathyzin</div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../downloads/arquivos.html">Downloads</a></li>
+        <li><a href="../info/sobre.html">Sobre</a></li>
+        <li><a href="../redirects/github.html" target="_blank">GitHub</a></li>
+        <li><a href="../redirects/discord.html" target="_blank">Discord</a></li>
+        <li><a href="../redirects/youtube.html" target="_blank">YouTube</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up">
+    <h1>Termos de Serviço</h1>
+    <p>Última atualização: 30/09/2024 | Versão: 1.2.0</p>
+  </section>
+  
+  <!-- Conteúdo Principal -->
+  <main>
+    <div class="content" data-aos="fade-up">
+      <p>Bem-vindo à página de Termos de Serviço do aMathyzin. Estes termos regem o acesso e uso do nosso site e serviços. Ao utilizar nosso site, você concorda com todas as condições aqui descritas.</p>
+      
+      <div class="accordion">
+        <!-- Seção 1: Aceitação dos Termos -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            1. Aceitação dos Termos <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Ao acessar e utilizar o site aMathyzin, você concorda em estar vinculado a estes Termos de Serviço e a quaisquer futuras atualizações. Se você não concordar com qualquer parte destes termos, por favor, não utilize nosso site.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 2: Modificações dos Termos -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            2. Modificações dos Termos <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Reservamo-nos o direito de atualizar ou modificar estes Termos de Serviço a qualquer momento, sem aviso prévio. As alterações serão publicadas nesta página e o uso contínuo do site constitui aceitação dos termos revisados.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 3: Uso do Site e Responsabilidades -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            3. Uso do Site e Responsabilidades <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Você concorda em utilizar o site de forma ética e legal, respeitando todas as leis e regulamentações aplicáveis. É vedado o uso do site para fins fraudulentos, maliciosos ou que possam prejudicar terceiros.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 4: Propriedade Intelectual -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            4. Propriedade Intelectual <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Todo o conteúdo, incluindo textos, imagens, logotipos e gráficos disponíveis no site aMathyzin é protegido por direitos autorais e outras leis de propriedade intelectual. O uso não autorizado deste conteúdo é estritamente proibido.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 5: Limitação de Responsabilidade -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            5. Limitação de Responsabilidade <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>O site é fornecido "no estado em que se encontra", sem garantias de qualquer tipo, expressas ou implícitas. Em nenhuma circunstância o aMathyzin será responsável por danos diretos, indiretos ou consequenciais decorrentes do uso ou da incapacidade de uso do site.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 6: Links Externos e Conteúdo de Terceiros -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            6. Links Externos e Conteúdo de Terceiros <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>O site pode conter links para sites de terceiros que não são de nossa responsabilidade. A inclusão de tais links não implica endosso ou aprovação do conteúdo desses sites, e seu uso é de inteira responsabilidade do usuário.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 7: Política de Privacidade -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            7. Política de Privacidade <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Sua privacidade é muito importante para nós. Consulte nossa <a href="privacidade.html" target="_blank">Política de Privacidade</a> para entender como coletamos, armazenamos e protegemos suas informações pessoais.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 8: Segurança e Proteção de Dados -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            8. Segurança e Proteção de Dados <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Adotamos medidas técnicas e administrativas para proteger os dados transmitidos e armazenados em nossos servidores, mas não garantimos a inviolabilidade absoluta das informações transmitidas via internet.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 9: Resolução de Conflitos e Lei Aplicável -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            9. Resolução de Conflitos e Lei Aplicável <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Quaisquer controvérsias decorrentes do uso do site serão resolvidas de acordo com as leis brasileiras. Recomenda-se a mediação como primeira forma de resolução de conflitos, sendo o foro da comarca do usuário aplicado caso não haja acordo.</p>
+          </div>
+        </div>
+        
+        <!-- Seção 10: Contato -->
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            10. Contato <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            <p>Em caso de dúvidas ou para reportar problemas relacionados a estes Termos de Serviço, entre em contato conosco pelo e-mail <a href="mailto:contato@amathyzin.com" target="_blank">contato@amathyzin.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <div class="social-links">
+      <a href="https://github.com/amathyzin" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.youtube.com/@aMathyzin" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://amathyzin.com/discord" target="_blank"><i class="fab fa-discord"></i></a>
+    </div>
+    <div class="footer-links" data-aos="fade-up">
+      <a href="termos.html" class="active">Termos de Serviço</a> | 
+      <a href="privacy.html">Política de Privacidade</a>
+    </div>
+    <p data-aos="fade-up">&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
+  </footer>
+  
+  <!-- Scripts de animação e interação -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    
+    function toggleAccordion(element) {
+      const content = element.nextElementSibling;
+      if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        element.querySelector('i').style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('open');
+        element.querySelector('i').style.transform = 'rotate(180deg)';
+      }
+    }
+    
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+  
+  <script>
+    const canvas = document.getElementById('particle-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera.position.z = 2;
+    
+    const particleCount = 3000;
+    const posArray = new Float32Array(particleCount * 3);
+    for(let i = 0; i < particleCount * 3; i++){
+      posArray[i] = (Math.random() - 0.5) * 6;
+    }
+    const particles = new THREE.BufferGeometry();
+    particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particleMaterial = new THREE.PointsMaterial({ size: 0.005, color: '#ff6b6b' });
+    const particleMesh = new THREE.Points(particles, particleMaterial);
+    scene.add(particleMesh);
+    
+    function animateParticles(){
+      requestAnimationFrame(animateParticles);
+      particleMesh.rotation.y += 0.001;
+      renderer.render(scene, camera);
+    }
+    function onResize(){
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', onResize);
+    onResize();
+    animateParticles();
+  </script>
+  <script src="./script/nan.js"></script>
+  <script src="../scripts/smooth-scroll.js"></script>
+</body>
+</html>

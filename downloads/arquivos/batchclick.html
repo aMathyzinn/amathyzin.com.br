@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Ícones do Site -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://amathyzin.com/logo.png">
+  <link rel="icon" href="https://amathyzin.com/logo.png" type="image/png">
+
+  <!-- Meta Tags para SEO e Redes Sociais -->
+  <meta name="description" content="Baixe o BatchClick, um pack de otimização avançada para Windows que melhora o desempenho do seu sistema com precisão e eficiência.">
+  <meta name="keywords" content="BatchClick, otimização de Windows, pack de otimização, performance, download BatchClick">
+  <meta name="author" content="aMathyzin">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="BatchClick - Pack de Otimização Avançada para Windows">
+  <meta property="og:description" content="O BatchClick é um pack de otimização avançada que melhora o desempenho do seu Windows com precisão e eficiência. Baixe agora!">
+  <meta property="og:image" content="https://amathyzin.com/downloads/icons/batchclick.png">
+  <meta property="og:url" content="https://amathyzin.com/downloads/batchclick">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BatchClick - Pack de Otimização Avançada para Windows">
+  <meta name="twitter:description" content="Baixe o BatchClick, um pack de otimização avançada para Windows que melhora a performance do seu sistema com precisão.">
+  <meta name="twitter:image" content="https://amathyzin.com/downloads/icons/batchclick.png">
+  
+  <!-- Dados Estruturados (JSON‑LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "BatchClick",
+    "operatingSystem": "Windows",
+    "applicationCategory": "UtilityApplication",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "20"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "BRL"
+    },
+    "url": "https://amathyzin.com/downloads/batchclick",
+    "image": "https://amathyzin.com/downloads/icons/batchclick.png",
+    "description": "BatchClick é um pack de otimização avançada para Windows que melhora o desempenho do sistema com alta precisão e eficiência."
+  }
+  </script>
+  
+  <!-- Título da Página -->
+  <title>BatchClick - Pack de Otimização Avançada para Windows</title>
+  
+  <!-- Font Awesome, AOS, SweetAlert2, Three.js e GSAP -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  
+  <style>
+    /* Estilos base */
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --accent: #ffe66d;
+      --dark: #1a1a1a;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    /* Fundo Animado */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      background: rgba(25,25,25,0.9);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 0 25px rgba(255,107,107,0.5);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+    /* Conteúdo Principal */
+    main {
+      padding-top: 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .download-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    /* Seção do Tutorial */
+    .tutorial-section {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 600px;
+    }
+    .tutorial-section h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .tutorial-section iframe {
+      width: 100%;
+      max-width: 740px;
+      height: 480px;
+      border: none;
+      border-radius: 5px;
+    }
+    .description-box {
+      margin-top: 15px;
+      background: rgba(0,0,0,0.8);
+      border: 1px solid var(--primary);
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .description-box h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .description-box p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    /* Seção de Download */
+    .download-section {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1 1 500px;
+      text-align: center;
+    }
+    .download-section h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .download-section p {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .download-section .file-icon {
+      max-width: 200px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    /* Barra de Progresso */
+    .progress-bar-container {
+      width: 100%;
+      background-color: var(--primary);
+      margin: 20px 0;
+      height: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar {
+      height: 100%;
+      background-color: var(--secondary);
+      width: 0%;
+      border-radius: 5px;
+      transition: width 0.4s ease;
+    }
+    .progress-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .progress-indicator {
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    /* Termos e Botões */
+    .terms-container {
+      margin: 15px 0;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid var(--primary);
+      border-radius: 5px;
+      animation: pulse 1.5s infinite;
+    }
+    .terms-container.no-animation {
+      animation: none;
+      box-shadow: none;
+    }
+    .terms-container label {
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .terms-container input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    .download-button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      margin: 10px auto;
+    }
+    .download-button:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+    .download-button:hover:not(:disabled) {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .password-button {
+      background-color: #8605C2;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 10px auto;
+      display: block;
+    }
+    /* Contador de Downloads */
+    .counter {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+    /* Footer */
+    footer {
+      background: rgba(25,25,25,0.9);
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 2px solid var(--secondary);
+      margin-top: 50px;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px var(--primary); }
+      50% { box-shadow: 0 0 20px var(--primary); }
+      100% { box-shadow: 0 0 10px var(--primary); }
+    }
+    @media (max-width: 768px) {
+      .download-container {
+        flex-direction: column;
+      }
+      .tutorial-section iframe {
+        height: 300px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fundo Animado -->
+  <canvas id="particle-canvas"></canvas>
+  
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar" data-aos="fade-down">
+      <div class="logo">aMathyzin</div>
+      <ul class="nav-links">
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="../arquivos.html"><i class="fas fa-download"></i> Downloads</a></li>
+        <li><a href="../../info/sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+        <li><a href="../../redirects/github.html" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+        <li><a href="../../redirects/discord.html" target="_blank"><i class="fab fa-discord"></i> Comunidade</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Conteúdo Principal -->
+  <main>
+    <section class="download-container">
+      <!-- Seção do Tutorial -->
+      <div class="tutorial-section" data-aos="fade-right">
+        <h2><i class="fas fa-video"></i> Tutorial</h2>
+        <iframe src="https://www.youtube.com/embed/iN5C3KDIGH8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="description-box">
+          <h3><i class="fas fa-info-circle"></i> Sobre o Pack BatchClick</h3>
+          <p>O BatchClick é um pack de otimização avançada, feito para otimizar seu Windows com alta precisão e eficiência.</p>
+          <p>No vídeo acima, é ensinado como utilizá-lo da melhor forma.</p>
+          <p class="important"><i class="fas fa-exclamation-circle"></i> Todos os direitos são reservados ao Grupo aMathyzin. Desenvolvedores: aMathyzin &amp; Memphis.</p>
+          <p class="warning"><i class="fas fa-ban"></i> O BatchClick é um pack gratuito. Fica completamente proibido vendê-lo.</p>
+        </div>
+      </div>
+      
+      <!-- Seção de Download -->
+      <div class="download-section" data-aos="fade-left">
+        <img class="file-icon" src="../../img/batchclick.png" alt="Ícone do BatchClick">
+        <h2><i class="fas fa-download"></i> Download do BatchClick</h2>
+        <p>BatchClick Pack.zip - 3.01 MB</p>
+        
+        <!-- Barra de Progresso -->
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+          <div class="progress-text" id="progress-text">0%</div>
+        </div>
+        <div class="progress-indicator" id="progress-indicator">0 KB de 3.01 MB</div>
+        
+        <!-- Termos -->
+        <div class="terms-container" id="terms-container">
+          <label>
+            <input type="checkbox" id="terms-checkbox"> Eu aceito os <a href="https://amathyzin.com/termos" target="_blank" style="color: var(--primary); text-decoration: underline;">Termos de Serviço</a>
+          </label>
+        </div>
+        
+        <!-- Botões: Download e Senha -->
+        <button onclick="handleDownloadButtonClick('./files/BatchClick_Booster.zip', 'BatchClick Pack - aMathyzin.zip')" class="download-button" id="download-button" disabled>Download</button>
+        <button onclick="mostrarSenha()" class="password-button">Senha</button>
+        
+        <!-- Contador de Downloads -->
+        <p class="counter">Downloads: <span id="download-count">0</span></p>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <div style="margin-bottom: 1rem;">
+      <a href="mailto:contato@amathyzin.com"><i class="fas fa-envelope"></i> contato@amathyzin.com</a>
+      <a href="../../redirects/discord.html" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+      <a href="../../redirects/youtube.html" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+    <div class="footer-links" data-aos="fade-up" style="margin-bottom: 1rem;">
+      <a href="../../juridico/termos.html" target="_blank">Termos de Serviço</a> | 
+      <a href="../../juridico/privacy.html" target="_blank">Política de Privacidade</a>
+    </div>
+    <p>&copy; 2025 aMathyzin. Todos os direitos reservados.</p>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    
+    // Estado do download: "idle", "waiting", "downloading", "complete"
+    let downloadState = "idle";
+    
+    // Função para atualizar o estado e aparência do botão de download
+    function updateButtonState(text, disabled) {
+      const btn = document.getElementById('download-button');
+      btn.innerText = text;
+      btn.disabled = disabled;
+    }
+    
+    // URL do backend para contagem de downloads
+    const backendUrl = 'https://probable-entertaining-chess.glitch.me';
+    
+    // Atualiza a contagem de downloads para o fileId "BatchClick"
+    function updateDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao obter a contagem:', error));
+    }
+    
+    // Incrementa a contagem de downloads para o fileId "BatchClick" após download concluído
+    function incrementDownloadCount(fileId) {
+      fetch(`${backendUrl}/api/downloads/${fileId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('download-count').innerText = data.count;
+        })
+        .catch(error => console.error('Erro ao incrementar a contagem:', error));
+    }
+    
+    // Inicializa a contagem para "BatchClick"
+    updateDownloadCount('BatchClick');
+    
+    // Função para tratar o clique do botão de download
+    function handleDownloadButtonClick(url, nomeArquivo) {
+      if (downloadState === "waiting" || downloadState === "downloading") return;
+      
+      if (downloadState === "complete") {
+        Swal.fire({
+          title: 'Confirmar Download',
+          text: 'Deseja baixar novamente?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Sim',
+          cancelButtonText: 'Não',
+          background: '#333',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            downloadState = "waiting";
+            updateButtonState("Aguarde...", true);
+            iniciarDownload(url, nomeArquivo);
+          }
+        });
+      } else {
+        downloadState = "waiting";
+        updateButtonState("Aguarde...", true);
+        iniciarDownload(url, nomeArquivo);
+      }
+    }
+    
+    // Função para realizar o download com barra de progresso
+    function iniciarDownload(url, nomeArquivo) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'blob';
+      
+      xhr.onloadstart = function() {
+        document.getElementById('progress-bar').style.width = '0%';
+        document.getElementById('progress-text').innerText = '0%';
+        document.getElementById('progress-indicator').innerText = '0 KB de 3.01 MB';
+      };
+      
+      xhr.onprogress = function(event) {
+        if (event.lengthComputable) {
+          let percent = (event.loaded / event.total) * 100;
+          document.getElementById('progress-bar').style.width = percent + '%';
+          document.getElementById('progress-text').innerText = percent.toFixed(2) + '%';
+          document.getElementById('progress-indicator').innerText = formatFileSize(event.loaded) + ' de ' + formatFileSize(event.total);
+          
+          if (downloadState === "waiting") {
+            downloadState = "downloading";
+            updateButtonState("Download Iniciado", true);
+          }
+        }
+      };
+      
+      xhr.onload = function() {
+        if (xhr.status === 200 && xhr.response.size > 0) {
+          document.getElementById('progress-bar').style.width = '100%';
+          document.getElementById('progress-text').innerText = '100%';
+          setTimeout(() => {
+            const blob = new Blob([xhr.response], { type: 'application/octet-stream' });
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = nomeArquivo;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(downloadUrl);
+            updateButtonState("Download Completo", false);
+            downloadState = "complete";
+            
+            // Incrementa a contagem para "BatchClick"
+            incrementDownloadCount('BatchClick');
+            
+            Swal.fire({
+              title: 'Download Concluído!',
+              text: 'Seu arquivo foi baixado com sucesso.',
+              icon: 'success',
+              background: '#333',
+              confirmButtonText: 'OK',
+              color: '#FFF',
+              backdrop: 'rgba(0,0,0,0.5)'
+            });
+          }, 500);
+        } else {
+          Swal.fire({
+            title: 'Erro no Download!',
+            text: 'Não foi possível baixar o arquivo. Tente novamente mais tarde.',
+            icon: 'error',
+            background: '#333',
+            confirmButtonText: 'OK',
+            color: '#FFF',
+            backdrop: 'rgba(0,0,0,0.5)'
+          });
+          updateButtonState("Download", false);
+          downloadState = "idle";
+        }
+      };
+      
+      xhr.onerror = function() {
+        Swal.fire({
+          title: 'Erro no Download!',
+          text: 'Ocorreu um erro durante o download. Tente novamente mais tarde.',
+          icon: 'error',
+          background: '#333',
+          confirmButtonText: 'OK',
+          color: '#FFF',
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+        updateButtonState("Download", false);
+        downloadState = "idle";
+      };
+      
+      xhr.send();
+    }
+    
+    function formatFileSize(bytes) {
+      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+      if (bytes === 0) return '0 Bytes';
+      const i = Math.floor(Math.log(bytes) / Math.log(1024));
+      return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // Habilita o botão de download ao aceitar os termos
+    document.getElementById('terms-checkbox').addEventListener('change', function() {
+      const btn = document.getElementById('download-button');
+      const container = document.getElementById('terms-container');
+      if (downloadState === "idle") {
+        btn.disabled = !this.checked;
+      }
+      container.classList.toggle('no-animation', this.checked);
+    });
+    
+    // Função para exibir a senha do pack
+    function mostrarSenha() {
+      Swal.fire({
+        title: 'Senha do Pack',
+        text: 'Entre no servidor do Discord para pegar a senha!',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Entrar',
+        cancelButtonText: 'Cancelar',
+        footer: 'ou <a href="http://encurtadorbr.net/senhabatclick">Pegar via Encurtador</a>',
+        background: '#333',
+        color: '#FFF',
+        backdrop: 'rgba(0,0,0,0.5)'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = 'https://amathyzin.com/discord';
+        }
+      });
+    }
+    
+    // Hamburger: exibe popup com as opções da navbar em telas pequenas
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      Swal.fire({
+        title: 'Menu',
+        html: `
+          <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
+            <a href="../../index.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-home"></i> Início</a>
+            <a href="../arquivos.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-download"></i> Downloads</a>
+            <a href="../../info/sobre.html" style="color:var(--primary); text-decoration:none;"><i class="fas fa-info-circle"></i> Sobre</a>
+            <a href="../../redirects/github.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="../../redirects/discord.html" target="_blank" style="color:var(--primary); text-decoration:none;"><i class="fab fa-discord"></i> Comunidade</a>
+          </div>
+        `,
+        showConfirmButton: false,
+        background: '#333',
+        color: '#FFF'
+      });
+    });
+  </script>
+  
+  <!-- Scripts adicionais (se houver) -->
+  <script src="../scripts/smooth-scroll.js"></script>
+  <script src="./script/nan.js"></script>
+</body>
+</html>
