@@ -1,1 +1,0 @@
-//* Este script foi criado exclusivamente para fins de melhoria do nosso site, personalização de anúncios e solicitações legais. Garantimos que as informações coletadas estão seguras e não serão utilizadas para outros fins. *//d

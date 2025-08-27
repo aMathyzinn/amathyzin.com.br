@@ -1,7 +1,7 @@
 {
-    "rewrites": [
-      { "source": "/index", "destination": "/index.html" },
-      { "source": "/downloads", "destination": "/arquivos.html" }
-    ]
-  }
-  
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
+}
