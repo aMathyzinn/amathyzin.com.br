@@ -89,7 +89,6 @@ export function Community() {
                 src="https://discord.com/widget?id=1210446694953779260&theme=dark"
                 width="100%"
                 height="500"
-                allowTransparency={true}
                 frameBorder="0"
                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                 className="rounded-xl"

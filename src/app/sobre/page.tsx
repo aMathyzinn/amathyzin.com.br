@@ -60,7 +60,10 @@ export default function AboutPage() {
             className="text-xl text-white/70 max-w-3xl mx-auto"
           >
             Conheça nossa história, missão e o que nos motiva a criar as melhores 
-            otimizações para PC
+            otimizações para PC. aMathyzin é um projeto independente focado em otimização de sistemas,
+            criado por um entusiasta com anos de experiência em melhorar desempenho, reduzir lag e otimizar jogos.
+            Nosso trabalho inclui packs de otimização, ferramentas como RoBooster e guias passo-a-passo para resolver
+            problemas comuns em jogos como Valorant.
           </motion.p>
         </div>
       </section>
@@ -88,8 +91,9 @@ export default function AboutPage() {
                   engajada de entusiastas de tecnologia.
                 </p>
                 <p>
-                  Hoje, somos referência em otimização de PC no Brasil, com milhares de usuários 
-                  satisfeitos e uma comunidade ativa que cresce a cada dia.
+                  Hoje, mantemos uma comunidade ativa no Discord, canal no YouTube com tutoriais e um repositório
+                  público onde disponibilizamos alguns projetos e packs. Buscamos sempre transparência e suporte direto
+                  para nossa comunidade.
                 </p>
               </div>
             </motion.div>

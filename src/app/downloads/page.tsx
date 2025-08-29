@@ -2,65 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { ProjectCard } from '@/components/ui/ProjectCard'
+import products from '@/data/products'
 import { FaSearch, FaFilter, FaDownload } from 'react-icons/fa'
 import { useState } from 'react'
 
-const allProjects = [
-  {
-    id: 'robooster2',
-    title: 'RoBooster 2',
-    description: 'Otimizador avançado para Roblox integrado ao BloxStrap. Melhore FPS e reduza lag.',
-    videoUrl: 'https://drive.google.com/file/d/1biF5hgcND6I1r5Xg6lvW0Pm-TLqqMyNj/preview',
-    projectUrl: '/downloads/robooster2',
-    tags: ['Roblox', 'Otimização', 'FPS'],
-    category: 'games',
-  },
-  {
-    id: '3kpack',
-    title: 'aMathyzin 3k Pack',
-    description: 'Pack completo de otimização para Windows. Especial 3000 inscritos.',
-    videoUrl: 'https://www.youtube.com/embed/Pxcaxgx_j-0',
-    projectUrl: '/downloads/3kpack',
-    tags: ['Windows', 'Gaming', 'Pack Completo'],
-    category: 'system',
-  },
-  {
-    id: 'batchclick',
-    title: 'BatchClick Pack',
-    description: 'Otimizações em batch com interface simples. Ideal para PCs fracos.',
-    videoUrl: 'https://www.youtube.com/embed/iN5C3KDIGH8',
-    projectUrl: '/downloads/batchclick',
-    tags: ['Windows', 'Batch', 'Interface'],
-    category: 'system',
-  },
-  {
-    id: 'valorantbooster',
-    title: 'Valorant Booster',
-    description: 'Otimizador específico para Valorant. Reduza input lag e melhore a performance.',
-    videoUrl: 'https://www.youtube.com/embed/7qV-fDkxeVc',
-    projectUrl: '/downloads/valorantbooster',
-    tags: ['Valorant', 'FPS', 'Gaming'],
-    category: 'games',
-  },
-  {
-    id: 'fpspack',
-    title: 'FPS Pack Universal',
-    description: 'Pack de otimização focado em aumentar FPS em qualquer jogo.',
-    videoUrl: 'https://www.youtube.com/embed/E26PVIiKWbQ',
-    projectUrl: '/downloads/fpspack',
-    tags: ['FPS', 'Universal', 'Gaming'],
-    category: 'games',
-  },
-  {
-    id: 'haunted',
-    title: 'Haunted Optimizer',
-    description: 'Otimizador temático com interface dark. Performance e estilo.',
-    videoUrl: 'https://www.youtube.com/embed/ceBDhpBqe08',
-    projectUrl: '/downloads/haunted',
-    tags: ['Windows', 'Dark Theme', 'Style'],
-    category: 'system',
-  },
-]
+const allProjects = products
 
 const categories = [
   { id: 'all', label: 'Todos', icon: '🎯' },

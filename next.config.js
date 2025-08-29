@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const path = require('path')
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -24,6 +26,16 @@ const nextConfig = {
         permanent: false,
       },
     ]
+  },
+  webpack: (config, { isServer }) => {
+    config.resolve = config.resolve || {}
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      // point problematic imports to local shims that provide default exports
+      'webgl-sdf-generator': path.resolve(__dirname, 'src/shims/webgl-sdf-generator.js'),
+      'bidi-js': path.resolve(__dirname, 'src/shims/bidi-js.js'),
+    }
+    return config
   },
 }
 

@@ -124,17 +124,23 @@ export function RecentVideos() {
               >
                 {/* Video Thumbnail */}
                 <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-dark/50">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.id}`}
-                    className="w-full h-full"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={video.title}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-center justify-center">
-                    <FaPlay className="text-white/80 text-4xl" />
-                  </div>
+                  {/* Replace heavy iframe with clickable thumbnail to open YouTube */}
+                  <a
+                    href={`https://www.youtube.com/watch?v=${video.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full h-full block relative"
+                  >
+                    <img
+                      src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <FaPlay className="text-white/80 text-4xl" />
+                    </div>
+                  </a>
                 </div>
 
                 {/* Video Info */}

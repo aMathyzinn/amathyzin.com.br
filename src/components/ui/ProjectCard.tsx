@@ -20,21 +20,33 @@ export function ProjectCard({ title, description, videoUrl, projectUrl, tags = [
     >
       {/* Video Preview */}
       <div className="relative aspect-video mb-4 rounded-lg overflow-hidden bg-dark/50">
-        <iframe
-          src={videoUrl}
-          className="w-full h-full"
-          allow="autoplay"
-          loading="lazy"
-          title={`${title} preview`}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-        <motion.div
-          initial={{ scale: 0 }}
-          whileHover={{ scale: 1 }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        {/* Use a thumbnail instead of embedding the full iframe for better performance */}
+        <a
+          href={videoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-full block relative"
         >
-          <FaPlay className="text-white/80 text-4xl" />
-        </motion.div>
+          {/* Attempt to extract YouTube id from common videoUrl formats */}
+          <img
+            src={
+              videoUrl.includes('youtube')
+                ? `https://i.ytimg.com/vi/${videoUrl.split('v=')[1] || videoUrl.split('/').pop()}/hqdefault.jpg`
+                : '/placeholder-video.jpg'
+            }
+            alt={`${title} thumbnail`}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <motion.div
+            initial={{ scale: 0 }}
+            whileHover={{ scale: 1 }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          >
+            <FaPlay className="text-white/80 text-4xl" />
+          </motion.div>
+        </a>
       </div>
 
       {/* Content */}
