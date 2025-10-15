@@ -90,8 +90,8 @@ export default function DownloadsPage() {
           {/* Métricas */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-8 max-w-4xl mx-auto">
             {[
-              { value: '300K+', label: 'Downloads Totais', icon: FaDownload },
-              { value: '250K+', label: 'Usuários Únicos', icon: FaUsers },
+              { value: '+50K', label: 'Downloads Totais', icon: FaDownload },
+              { value: '8K+', label: 'Usuários Únicos', icon: FaUsers },
               { value: '4.9', label: 'Avaliação Média', icon: FaStar },
               { value: '98%', label: 'Taxa de Sucesso', icon: FaCheckCircle },
             ].map(({ value, label, icon: Icon }) => (
@@ -114,15 +114,6 @@ export default function DownloadsPage() {
       {/* Filters Section */}
       <section className="section-padding">
         <div className="container-custom mx-auto">
-          {/* Cabeçalho de filtros */}
-          <div className="text-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Encontre a <span className="text-gradient">Ferramenta Perfeita</span>
-            </h2>
-            <p className="text-white/60 max-w-2xl mx-auto mt-2 text-sm">
-              Use nossas filtros avançadas para descobrir exatamente o que você precisa.
-            </p>
-          </div>
           <div className="flex flex-col xl:flex-row gap-4 mb-8 items-stretch">
             {/* Search Bar */}
             <div className="flex-1">
@@ -186,7 +177,7 @@ export default function DownloadsPage() {
             </div>
             <div className="flex items-center gap-2 text-primary">
               <FaDownload />
-              <span className="font-semibold">+300K Downloads</span>
+              <span className="font-semibold">+10K Downloads</span>
             </div>
           </div>
 

@@ -186,7 +186,7 @@ export default function DownloadsPage() {
             </div>
             <div className="flex items-center gap-2 text-primary">
               <FaDownload />
-              <span className="font-semibold">+300K Downloads</span>
+              <span className="font-semibold">+10K Downloads</span>
             </div>
           </div>
 

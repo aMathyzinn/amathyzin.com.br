@@ -41,9 +41,7 @@ export function ProjectCard({ title, description, videoUrl, projectUrl, tags = [
     return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`
   }
 
-  const coverSrc = (videoUrl && videoUrl.includes('youtube'))
-    ? deriveYouTubeThumb(videoUrl)
-    : (imageUrl && imageUrl.trim() !== '' ? imageUrl : placeholderSvg)
+  const coverSrc = imageUrl && imageUrl.trim() !== '' ? imageUrl : deriveYouTubeThumb(videoUrl)
   const prettyDownloads = typeof downloads === 'number' ? `${downloads.toLocaleString('pt-BR')} downloads` : 'Verificado & Seguro'
   return (
     <motion.div

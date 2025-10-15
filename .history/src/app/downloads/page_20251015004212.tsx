@@ -90,8 +90,8 @@ export default function DownloadsPage() {
           {/* Métricas */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-8 max-w-4xl mx-auto">
             {[
-              { value: '300K+', label: 'Downloads Totais', icon: FaDownload },
-              { value: '250K+', label: 'Usuários Únicos', icon: FaUsers },
+              { value: '+50K', label: 'Downloads Totais', icon: FaDownload },
+              { value: '8K+', label: 'Usuários Únicos', icon: FaUsers },
               { value: '4.9', label: 'Avaliação Média', icon: FaStar },
               { value: '98%', label: 'Taxa de Sucesso', icon: FaCheckCircle },
             ].map(({ value, label, icon: Icon }) => (
@@ -186,7 +186,7 @@ export default function DownloadsPage() {
             </div>
             <div className="flex items-center gap-2 text-primary">
               <FaDownload />
-              <span className="font-semibold">+300K Downloads</span>
+              <span className="font-semibold">+10K Downloads</span>
             </div>
           </div>
 
