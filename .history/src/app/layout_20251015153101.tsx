@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
@@ -59,12 +59,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   themeColor: '#0d0d0d',
 }
 

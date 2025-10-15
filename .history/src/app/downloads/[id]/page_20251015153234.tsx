@@ -35,39 +35,8 @@ export default async function ProductPage({ params }: Params) {
     )
   }
 
-  const ytId = getYouTubeId(product.videoUrl)
-  const videoThumb = ytId ? `https://i.ytimg.com/vi/${ytId}/maxresdefault.jpg` : undefined
-  const ogImage = videoThumb || product.imageUrl || '/imgs/logo.webp'
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: product.title,
-    description: product.description,
-    applicationCategory: 'UtilitiesApplication',
-    operatingSystem: 'Windows',
-    url: `https://amathyzin.com.br${product.projectUrl}/`,
-    image: ogImage,
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'BRL',
-      availability: 'https://schema.org/InStock',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'aMathyzin',
-      url: 'https://amathyzin.com.br/',
-    },
-    interactionStatistic: {
-      '@type': 'InteractionCounter',
-      interactionType: 'https://schema.org/DownloadAction',
-      userInteractionCount: product.downloads || 0,
-    },
-  }
-
   return (
     <div className="min-h-screen pt-20 bg-gradient-dark">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Breadcrumb */}
       <div className="container-custom mx-auto px-4">
         <div className="flex items-center gap-2 text-white/50 text-sm py-4">
@@ -303,11 +272,8 @@ function getYouTubeId(url?: string) {
   }
 }
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> },
-  _parent?: unknown
-): Promise<Metadata> {
-  const { id } = await params
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const id = params.id
   const product = products.find(p => p.id === id)
 
   if (!product) {
@@ -350,8 +316,8 @@ export async function generateMetadata(
       title,
       description: desc,
       url,
-      type: 'website',
-    images: [{ url: ogImage, width: 1200, height: 630, alt: product.title }],
+      type: 'product',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: product.title }],
     },
     twitter: {
       card: 'summary_large_image',

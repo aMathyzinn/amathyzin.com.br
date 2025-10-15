@@ -6,9 +6,7 @@ import { FaDownload, FaArrowLeft, FaCheckCircle, FaExternalLinkAlt, FaGithub, Fa
 import TermsDownload from '@/components/downloads/TermsDownload'
 import DeveloperBadge from '@/components/ui/DeveloperBadge'
 
-type Params = {
-  params: Promise<{ id: string }>
-}
+type Params = { params: Promise<{ id: string }> }
 
 export async function generateStaticParams() {
   return products.map(p => ({ id: p.id }))
@@ -25,7 +23,7 @@ export default async function ProductPage({ params }: Params) {
           <div className="card-gradient p-12 rounded-2xl max-w-md mx-auto">
             <h2 className="text-3xl font-bold mb-4">Produto não encontrado</h2>
             <p className="text-white/60 mb-6">Verifique o link ou volte para a página de downloads.</p>
-            <Link href="/downloads" className="btn-primary inline-flex items-center gap-2">
+            <Link href="/downloads/" className="btn-primary inline-flex items-center gap-2">
               <FaArrowLeft />
               Voltar aos Downloads
             </Link>
@@ -73,7 +71,7 @@ export default async function ProductPage({ params }: Params) {
         <div className="flex items-center gap-2 text-white/50 text-sm py-4">
           <Link href="/" className="hover:text-white">Início</Link>
           <span>›</span>
-          <Link href="/downloads" className="hover:text-white">Downloads</Link>
+          <Link href="/downloads/" className="hover:text-white">Downloads</Link>
           <span>›</span>
           <span className="text-white/80">{product.title}</span>
         </div>
@@ -276,8 +274,8 @@ export default async function ProductPage({ params }: Params) {
           <h3 className="text-xl font-bold">Precisa de Ajuda?</h3>
           <p className="text-white/70 mb-4">Nossa comunidade está pronta para ajudar com dúvidas e suporte.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="/youtube" target="_blank" rel="noopener noreferrer" className="btn-secondary"><FaYoutube /> Canal do YouTube</a>
-            <a href="/discord" className="btn-secondary">Suporte no Discord</a>
+            <a href="https://www.youtube.com/@aMathyzin" target="_blank" rel="noopener noreferrer" className="btn-secondary"><FaYoutube /> Canal do YouTube</a>
+            <a href="https://discord.gg/XBajMu5dcr" target="_blank" rel="noopener noreferrer" className="btn-secondary">Suporte no Discord</a>
           </div>
         </div>
       </div>
@@ -303,11 +301,8 @@ function getYouTubeId(url?: string) {
   }
 }
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> },
-  _parent?: unknown
-): Promise<Metadata> {
-  const { id } = await params
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const id = (await params).id
   const product = products.find(p => p.id === id)
 
   if (!product) {
@@ -350,7 +345,7 @@ export async function generateMetadata(
       title,
       description: desc,
       url,
-      type: 'website',
+      type: 'product',
     images: [{ url: ogImage, width: 1200, height: 630, alt: product.title }],
     },
     twitter: {

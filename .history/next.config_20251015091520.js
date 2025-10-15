@@ -3,18 +3,17 @@ const path = require('path')
 
 const nextConfig = {
   reactStrictMode: true,
-  // Migrar de export estático para build padrão da Vercel
-  // (serverless/edge), habilitando compressão e evitando redirects extras
-  compress: true,
-  trailingSlash: false,
-  poweredByHeader: false,
+  // Configure static export to generate 'out' folder
+  output: 'export',
+  trailingSlash: true,
   // Allow development requests from your local network IP
   allowedDevOrigins: ['192.168.1.3:3000', '192.168.1.3:3001'],
   images: {
-    // Usar otimização nativa do Next/Image na Vercel
-    unoptimized: false,
+    // Disable Next/Image optimization in static export
+    // to avoid 404s on _next/image when using output: 'export'
+    unoptimized: true,
+    // Enable Next Image optimization and modern formats
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000,
     remotePatterns: [
       { protocol: 'https', hostname: 'amathyzin.com.br', pathname: '/**' },
       { protocol: 'https', hostname: 'i.ytimg.com', pathname: '/**' },
@@ -23,39 +22,6 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.youtube.com', pathname: '/**' },
       { protocol: 'https', hostname: 'discord.com', pathname: '/**' },
     ],
-  },
-  async headers() {
-    return [
-      // Cache agressivo para assets estáticos gerados pelo Next
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-          { key: 'Expires', value: 'Thu, 31 Dec 2037 23:55:55 GMT' },
-        ],
-      },
-      // Cache longo para imagens otimizadas
-      {
-        source: '/_next/image/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      // Cache para assets do diretório público
-      {
-        source: '/imgs/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-          { key: 'Expires', value: 'Thu, 31 Dec 2037 23:55:55 GMT' },
-        ],
-      },
-      {
-        source: '/download_files/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=604800' },
-        ],
-      },
-    ]
   },
   async redirects() {
     return [

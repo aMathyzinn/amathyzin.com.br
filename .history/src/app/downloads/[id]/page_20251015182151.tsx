@@ -350,7 +350,7 @@ export async function generateMetadata(
       title,
       description: desc,
       url,
-      type: 'website',
+      type: 'product',
     images: [{ url: ogImage, width: 1200, height: 630, alt: product.title }],
     },
     twitter: {

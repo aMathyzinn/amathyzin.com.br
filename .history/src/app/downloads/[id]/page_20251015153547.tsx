@@ -303,11 +303,8 @@ function getYouTubeId(url?: string) {
   }
 }
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> },
-  _parent?: unknown
-): Promise<Metadata> {
-  const { id } = await params
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const id = params.id
   const product = products.find(p => p.id === id)
 
   if (!product) {
@@ -350,7 +347,7 @@ export async function generateMetadata(
       title,
       description: desc,
       url,
-      type: 'website',
+      type: 'product',
     images: [{ url: ogImage, width: 1200, height: 630, alt: product.title }],
     },
     twitter: {
