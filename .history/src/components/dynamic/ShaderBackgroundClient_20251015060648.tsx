@@ -1,0 +1,13 @@
+'use client'
+
+import dynamic from 'next/dynamic'
+
+// Client-only wrapper to load the heavy WebGL shader background after hydration
+const ShaderBackground = dynamic(
+  () => import('@/components/effects/ShaderBackground').then(m => m.ShaderBackground),
+  { ssr: false }
+)
+
+export default function ShaderBackgroundClient() {
+  return <ShaderBackground />
+}

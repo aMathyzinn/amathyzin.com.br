@@ -1,0 +1,32 @@
+{
+  "name": "Amathyzin - Ferramentas e Projetos",
+  "short_name": "Amathyzin",
+  "description": "Ferramentas, projetos e recursos para desenvolvimento",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101018",
+  "theme_color": "#101018",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/imgs/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/imgs/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["developer", "productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "/imgs/works/roblox.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}
